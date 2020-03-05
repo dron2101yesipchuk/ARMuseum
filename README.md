@@ -4,4 +4,4 @@ My bachelor's degree project. It will be an AR app for museum, which will allow 
 * to detect objects and pictures, overlaying them with some information.
 * to interact with AR objects
 * to listen audio-guides
-* to view museum map
+* to view museum's map
