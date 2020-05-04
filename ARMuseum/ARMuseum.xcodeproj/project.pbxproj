@@ -15,7 +15,6 @@
 		9F5C9F74245F3E2B0044DE1A /* VirtualObjects.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C9F73245F3E2B0044DE1A /* VirtualObjects.xcassets */; };
 		9F7BB4312450EAA600E675DD /* MainARController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7BB42F2450EAA600E675DD /* MainARController.swift */; };
 		9F988FDB24111E980021A8B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F988FDA24111E980021A8B5 /* AppDelegate.swift */; };
-		9F988FDD24111E980021A8B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F988FDC24111E980021A8B5 /* ViewController.swift */; };
 		9F988FDF24111E980021A8B5 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 9F988FDE24111E980021A8B5 /* Experience.rcproject */; };
 		9F988FE224111E980021A8B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F988FE024111E980021A8B5 /* Main.storyboard */; };
 		9F988FE424111E9C0021A8B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F988FE324111E9C0021A8B5 /* Assets.xcassets */; };
@@ -212,7 +211,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F5C9F6E245F3C080044DE1A /* VirtualObjectsListController.swift in Sources */,
-				9F988FDD24111E980021A8B5 /* ViewController.swift in Sources */,
 				9F5C9F71245F3C620044DE1A /* VirtualObjectCell.swift in Sources */,
 				9F7BB4312450EAA600E675DD /* MainARController.swift in Sources */,
 				9F988FDB24111E980021A8B5 /* AppDelegate.swift in Sources */,
@@ -364,7 +362,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G25J6629A6;
 				INFOPLIST_FILE = ARMuseum/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -385,7 +383,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G25J6629A6;
 				INFOPLIST_FILE = ARMuseum/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

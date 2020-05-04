@@ -8,8 +8,9 @@
 
 import UIKit
 import ARKit
+import Vision
 
-class MainARController: UIViewController, ARSessionDelegate {
+class MainARController: UIViewController {
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var audioView: UIView!
@@ -46,8 +47,15 @@ class MainARController: UIViewController, ARSessionDelegate {
         
         // World tracking
         let configuration = ARWorldTrackingConfiguration()
+        
         let models = ARReferenceObject.referenceObjects(inGroupNamed: "models", bundle: nil)!
         configuration.detectionObjects = models
+        
+        let triggerImages = ARReferenceImage.referenceImages(inGroupNamed: "imageTriggers", bundle: nil)
+        configuration.detectionImages = triggerImages
+        configuration.maximumNumberOfTrackedImages = 1
+        
+        configuration.worldAlignment = .camera
         
         sceneView.session.run(configuration)
     }
@@ -59,59 +67,55 @@ class MainARController: UIViewController, ARSessionDelegate {
         sceneView.session.pause()
     }
     
-    func initCoachingOverlayView() {
-        let coachingOverlay = ARCoachingOverlayView()
-        coachingOverlay.session = self.sceneView.session
-        coachingOverlay.activatesAutomatically = true
-        coachingOverlay.goal = .horizontalPlane
-        coachingOverlay.delegate = self
-        self.sceneView.addSubview(coachingOverlay)
+    func createCardOverlayNode(for anchor: ARImageAnchor) -> SCNNode {
+        let box = SCNBox(
+            width: anchor.referenceImage.physicalSize.width, height: 0.0001,
+            length: anchor.referenceImage.physicalSize.height, chamferRadius: 0)
+        if let material = box.firstMaterial {
+            material.diffuse.contents = UIColor.red
+            material.transparency = 0.3
+        }
+        return SCNNode(geometry: box)
+    }
+    
+    func removeARPlaneNode(node: SCNNode) {
+      for childNode in node.childNodes {
+        childNode.removeFromParentNode()
+      }
+    }
+    
+}
+
+extension MainARController: ARSessionDelegate {
+    func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         
-        coachingOverlay.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(
-                item:  coachingOverlay, attribute: .top, relatedBy: .equal,
-                toItem: self.view, attribute: .top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(
-                item:  coachingOverlay, attribute: .bottom, relatedBy: .equal,
-                toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(
-                item:  coachingOverlay, attribute: .leading, relatedBy: .equal,
-                toItem: self.view, attribute: .leading, multiplier: 1, constant: 0),
-            NSLayoutConstraint(
-                item:  coachingOverlay, attribute: .trailing, relatedBy: .equal,
-                toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
-        ])
     }
 }
 
 extension MainARController : ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        
         if let objectAnchor = anchor as? ARObjectAnchor {
             handleFoundObject(node, objectAnchor)
         }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+      guard anchor is ARPlaneAnchor else { return }
+      DispatchQueue.main.async {
+        self.removeARPlaneNode(node: node)
+      }
     }
     
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         if let anchor = anchor as? ARObjectAnchor {
             print("Found 3D object: \(anchor.referenceObject.name!)")
             return SCNNode()
+        } else if let anchor = anchor as? ARImageAnchor {
+            let overlayNode = createCardOverlayNode(for: anchor)
+            return overlayNode
         }
         return nil
-    }
-}
-
-extension MainARController : ARCoachingOverlayViewDelegate {
-    
-    // MARK: - AR Coaching Overlay View
-    
-    func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
-    }
-    
-    func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
-    }
-    
-    func coachingOverlayViewDidRequestSessionReset(_ coachingOverlayView: ARCoachingOverlayView) {
     }
 }
 
@@ -133,4 +137,31 @@ extension MainARController {
         return titleNode
     }
     
+}
+
+extension MainARController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let currentFrame = sceneView.session.currentFrame else { return }
+        
+        DispatchQueue.global(qos: .background).async {
+            do {
+                let request = VNDetectBarcodesRequest { (request, error) in
+                    guard let results = request.results?.compactMap({ $0 as? VNBarcodeObservation }), let result = results.first else {
+                        print ("[Vision] VNRequest produced no result")
+                        return
+                    }
+                    
+                    if let payload = result.payloadStringValue {
+                        //TODO: add virtual object
+                    }                    
+                    
+                }
+                
+                let handler = VNImageRequestHandler(cvPixelBuffer: currentFrame.capturedImage)
+                try handler.perform([request])
+            } catch(let error) {
+                print("An error occurred during rectangle detection: \(error)")
+            }
+        }
+    }
 }
