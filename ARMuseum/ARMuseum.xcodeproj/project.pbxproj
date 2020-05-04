@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F5C9F68245F3BC30044DE1A /* Teapot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C9F65245F3BC20044DE1A /* Teapot.usdz */; };
+		9F5C9F69245F3BC30044DE1A /* Pig.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C9F66245F3BC20044DE1A /* Pig.usdz */; };
+		9F5C9F6A245F3BC30044DE1A /* Gramophone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C9F67245F3BC30044DE1A /* Gramophone.usdz */; };
+		9F5C9F6E245F3C080044DE1A /* VirtualObjectsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C9F6C245F3C080044DE1A /* VirtualObjectsListController.swift */; };
+		9F5C9F71245F3C620044DE1A /* VirtualObjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C9F70245F3C620044DE1A /* VirtualObjectCell.swift */; };
+		9F5C9F74245F3E2B0044DE1A /* VirtualObjects.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C9F73245F3E2B0044DE1A /* VirtualObjects.xcassets */; };
+		9F7BB4312450EAA600E675DD /* MainARController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7BB42F2450EAA600E675DD /* MainARController.swift */; };
 		9F988FDB24111E980021A8B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F988FDA24111E980021A8B5 /* AppDelegate.swift */; };
 		9F988FDD24111E980021A8B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F988FDC24111E980021A8B5 /* ViewController.swift */; };
 		9F988FDF24111E980021A8B5 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 9F988FDE24111E980021A8B5 /* Experience.rcproject */; };
@@ -16,6 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F5C9F65245F3BC20044DE1A /* Teapot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Teapot.usdz; sourceTree = "<group>"; };
+		9F5C9F66245F3BC20044DE1A /* Pig.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Pig.usdz; sourceTree = "<group>"; };
+		9F5C9F67245F3BC30044DE1A /* Gramophone.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Gramophone.usdz; sourceTree = "<group>"; };
+		9F5C9F6C245F3C080044DE1A /* VirtualObjectsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectsListController.swift; sourceTree = "<group>"; };
+		9F5C9F70245F3C620044DE1A /* VirtualObjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectCell.swift; sourceTree = "<group>"; };
+		9F5C9F73245F3E2B0044DE1A /* VirtualObjects.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = VirtualObjects.xcassets; sourceTree = "<group>"; };
+		9F7BB42F2450EAA600E675DD /* MainARController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARController.swift; sourceTree = "<group>"; };
 		9F988FD724111E980021A8B5 /* ARMuseum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARMuseum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F988FDA24111E980021A8B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F988FDC24111E980021A8B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +51,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F5C9F62245F3A450044DE1A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9F7BB42F2450EAA600E675DD /* MainARController.swift */,
+				9F5C9F6C245F3C080044DE1A /* VirtualObjectsListController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9F5C9F63245F3AD30044DE1A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F5C9F6B245F3BDD0044DE1A /* USDZ */,
+				9F988FE324111E9C0021A8B5 /* Assets.xcassets */,
+				9F988FE524111E9C0021A8B5 /* LaunchScreen.storyboard */,
+				9F5C9F73245F3E2B0044DE1A /* VirtualObjects.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9F5C9F64245F3AE40044DE1A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9F5C9F6B245F3BDD0044DE1A /* USDZ */ = {
+			isa = PBXGroup;
+			children = (
+				9F5C9F67245F3BC30044DE1A /* Gramophone.usdz */,
+				9F5C9F66245F3BC20044DE1A /* Pig.usdz */,
+				9F5C9F65245F3BC20044DE1A /* Teapot.usdz */,
+			);
+			path = USDZ;
+			sourceTree = "<group>";
+		};
+		9F5C9F72245F3C660044DE1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9F988FE024111E980021A8B5 /* Main.storyboard */,
+				9F5C9F70245F3C620044DE1A /* VirtualObjectCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9F5E6B99245CBCAE0086A86C /* RealityKit */ = {
+			isa = PBXGroup;
+			children = (
+				9F988FDC24111E980021A8B5 /* ViewController.swift */,
+				9F988FDE24111E980021A8B5 /* Experience.rcproject */,
+			);
+			path = RealityKit;
+			sourceTree = "<group>";
+		};
 		9F988FCE24111E980021A8B5 = {
 			isa = PBXGroup;
 			children = (
@@ -57,12 +126,12 @@
 			isa = PBXGroup;
 			children = (
 				9F988FDA24111E980021A8B5 /* AppDelegate.swift */,
-				9F988FDC24111E980021A8B5 /* ViewController.swift */,
-				9F988FDE24111E980021A8B5 /* Experience.rcproject */,
-				9F988FE024111E980021A8B5 /* Main.storyboard */,
-				9F988FE324111E9C0021A8B5 /* Assets.xcassets */,
-				9F988FE524111E9C0021A8B5 /* LaunchScreen.storyboard */,
 				9F988FE824111E9C0021A8B5 /* Info.plist */,
+				9F5C9F64245F3AE40044DE1A /* Helpers */,
+				9F5C9F63245F3AD30044DE1A /* Resources */,
+				9F5C9F72245F3C660044DE1A /* Views */,
+				9F5C9F62245F3A450044DE1A /* Controllers */,
+				9F5E6B99245CBCAE0086A86C /* RealityKit */,
 			);
 			path = ARMuseum;
 			sourceTree = "<group>";
@@ -125,9 +194,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5C9F69245F3BC30044DE1A /* Pig.usdz in Resources */,
+				9F5C9F6A245F3BC30044DE1A /* Gramophone.usdz in Resources */,
+				9F5C9F68245F3BC30044DE1A /* Teapot.usdz in Resources */,
 				9F988FE724111E9C0021A8B5 /* LaunchScreen.storyboard in Resources */,
 				9F988FE424111E9C0021A8B5 /* Assets.xcassets in Resources */,
 				9F988FE224111E980021A8B5 /* Main.storyboard in Resources */,
+				9F5C9F74245F3E2B0044DE1A /* VirtualObjects.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +211,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5C9F6E245F3C080044DE1A /* VirtualObjectsListController.swift in Sources */,
 				9F988FDD24111E980021A8B5 /* ViewController.swift in Sources */,
+				9F5C9F71245F3C620044DE1A /* VirtualObjectCell.swift in Sources */,
+				9F7BB4312450EAA600E675DD /* MainARController.swift in Sources */,
 				9F988FDB24111E980021A8B5 /* AppDelegate.swift in Sources */,
 				9F988FDF24111E980021A8B5 /* Experience.rcproject in Sources */,
 			);
@@ -288,6 +364,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G25J6629A6;
 				INFOPLIST_FILE = ARMuseum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G25J6629A6;
 				INFOPLIST_FILE = ARMuseum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
