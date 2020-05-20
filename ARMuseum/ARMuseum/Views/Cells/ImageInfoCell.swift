@@ -11,11 +11,12 @@ import UIKit
 class ImageInfoCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet var imageViewWidth: NSLayoutConstraint!
     
-    override class func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
         
-        
+        self.imageViewWidth.constant = UIScreen.main.bounds.width
     }
     
     func configureWith(image: UIImage) {

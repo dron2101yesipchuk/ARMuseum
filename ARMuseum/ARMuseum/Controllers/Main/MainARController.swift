@@ -9,6 +9,7 @@
 import UIKit
 import ARKit
 import Vision
+import SafariServices
 
 class MainARController: UIViewController {
     
@@ -26,8 +27,17 @@ class MainARController: UIViewController {
     @IBOutlet weak var scanQRButton: UIButton!
     
     var arInfoContainer: ARInfoContainer?
-    private var audioManager: AudioManager?
-        
+    var audioManager: AudioManager?
+    let feedbackGenerator = UINotificationFeedbackGenerator()
+    var videoNode: SKVideoNode?
+    var videoPlayer: AVPlayer?
+    
+    var isBlindModeOn: Bool = false {
+        didSet {
+            self.configureBlindMode()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,8 +49,8 @@ class MainARController: UIViewController {
         self.mapImageView.layer.cornerRadius = 10
         self.settingsButton.layer.cornerRadius = 10
         self.listButton.layer.cornerRadius = 10
-        
         self.pauseButton.isHidden = true
+        self.configureBlindMode()
         
         self.sceneView.delegate = self
         self.sceneView.showsStatistics = false
@@ -51,6 +61,16 @@ class MainARController: UIViewController {
         
         let scene = SCNScene()
         self.sceneView.scene = scene
+    }
+    
+    func configureBlindMode() {
+        self.feedbackGenerator.prepare()
+        self.audioView.isHidden = self.isBlindModeOn
+        self.playButton.isHidden = self.isBlindModeOn
+        self.pauseButton.isHidden = self.isBlindModeOn
+        self.mapImageView.isHidden = self.isBlindModeOn
+        self.listButton.isHidden = self.isBlindModeOn
+        self.scanQRButton.isHidden = self.isBlindModeOn
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,16 +140,20 @@ class MainARController: UIViewController {
     
     func createHostingController(for node: SCNNode, referenceImageName: String) {
         DispatchQueue.main.async {
-            guard let arVC = self.storyboard?.instantiateViewController(withIdentifier: "InfoController") as? InfoController,
+            guard let arVC = self.storyboard?.instantiateViewController(withIdentifier: "InfoCollectionController") as? InfoCollectionController,
                 let exhibitInfo = ExhibitsManager.shared.findExhibitInfo(exhibitName: referenceImageName) else {
-                return
+                    return
             }
             
-            arVC.info = exhibitInfo
-            self.arInfoContainer?.viewController = arVC
             self.arInfoContainer?.info = exhibitInfo
             NotificationsManager.shared.postAudioFoundNotification(exhibitInfo.audio != nil)
+            self.arInfoContainer?.viewController = arVC
+            self.arInfoContainer?.node = node
+            self.arInfoContainer?.videoPlayerDelegate = self
+            
             arVC.arInfoContainer = self.arInfoContainer
+            arVC.sceneView = self.sceneView
+            
             arVC.willMove(toParent: self)
             self.addChild(arVC)
             self.view.addSubview(arVC.view)
@@ -146,63 +170,88 @@ class MainARController: UIViewController {
     }
     
     func removeHostingController() {
-      if let anchor = arInfoContainer?.anchor {
-        if let viewController = arInfoContainer?.viewController {
-          viewController.willMove(toParent: nil)
-          viewController.view.removeFromSuperview()
-          viewController.removeFromParent()
+        
+        if let anchor = arInfoContainer?.anchor {
+            if let viewController = arInfoContainer?.viewController {
+                DispatchQueue.main.async {
+                    viewController.willMove(toParent: nil)
+                    viewController.view.removeFromSuperview()
+                    viewController.removeFromParent()
+                }
+                
+            }
+            self.sceneView.session.remove(anchor: anchor)
+            self.arInfoContainer?.node?.removeFromParentNode()
+            self.arInfoContainer?.videoNodeHandler = nil
+            self.arInfoContainer = nil
         }
-        self.sceneView.session.remove(anchor: anchor)
-        self.arInfoContainer?.node?.removeFromParentNode()
-        self.arInfoContainer = nil
-      }
+    }
+    
+    func createVideoNode(imageAnchor: ARImageAnchor, node: SCNNode) {
+        if let videoUrl = ExhibitsManager.shared.findExhibitInfo(exhibitName: imageAnchor.referenceImage.name ?? "")?.videoLink {
+            let url = URL(string: videoUrl)!
+            
+            let player = AVPlayer(url: url)
+            let videoNode = SKVideoNode(avPlayer: player)
+            videoNode.play()
+//            player.pause()
+            videoNode.size = CGSize(width: 1024, height: 1024)
+            // set the size (just a rough one will do)
+            let videoScene = SKScene(size: CGSize(width: 1024, height: 1024))
+            videoScene.scaleMode = .aspectFit
+            // center our video to the size of our video scene
+            videoNode.position = CGPoint(x: videoScene.size.width / 2, y: videoScene.size.height / 2)
+            // invert our video so it does not look upside down
+            videoNode.yScale = -1.0
+            // add the video to our scene
+            videoScene.addChild(videoNode)
+            // create a plan that has the same real world height and width as our detected image
+            let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
+            // set the first materials content to be our video scene
+            plane.firstMaterial?.diffuse.contents = videoScene
+            // create a node out of the plane
+            let planeNode = SCNNode(geometry: plane)
+            // since the created node will be vertical, rotate it along the x axis to have it be horizontal or parallel to our detected image
+            planeNode.eulerAngles.x = -Float.pi / 2
+            // finally add the plane node (which contains the video node) to the added node
+            node.addChildNode(planeNode)
+            
+            self.videoPlayer = player
+            self.videoPlayer?.pause()
+        }
     }
 }
 
 extension MainARController : ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if let objectAnchor = anchor as? ARObjectAnchor {
-            self.showObjectInfo(objectAnchor: objectAnchor, node: node)
-        } else if let imageAnchor = anchor as? ARImageAnchor {
-            self.showImageInfo(imageAnchor: imageAnchor, node: node)
+        if !self.isBlindModeOn {
+            feedbackGenerator.notificationOccurred(.success)
+            if let objectAnchor = anchor as? ARObjectAnchor {
+                self.showObjectInfo(objectAnchor: objectAnchor, node: node)
+            } else if let imageAnchor = anchor as? ARImageAnchor {
+                self.showImageInfo(imageAnchor: imageAnchor, node: node)
+                self.createVideoNode(imageAnchor: imageAnchor, node: node)
+            }
+        } else {
+            var name: String? = nil
+            if let objectAnchor = anchor as? ARObjectAnchor {
+                name = objectAnchor.referenceObject.name
+            } else if let imageAnchor = anchor as? ARImageAnchor {
+                name = imageAnchor.referenceImage.name
+            }
+            if let exhibitInfo = ExhibitsManager.shared.findExhibitInfo(exhibitName: name ?? "") {
+                self.arInfoContainer = ARInfoContainer(anchor: anchor, plane: SCNPlane())
+                self.arInfoContainer?.info = exhibitInfo
+                NotificationsManager.shared.postAudioFoundNotification(exhibitInfo.audio != nil)
+            }
         }
     }
-
+    
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         if let imageAnchor = anchor as? ARImageAnchor {
             node.isHidden = !imageAnchor.isTracked
         } else if let _ = anchor as? ARObjectAnchor {
-//            node.isHidden = anchor.is
-        }
-    }
-    
-}
-
-//TODO: Great refactoring
-extension MainARController {
-    @IBAction func scanQR(_ sender: UIButton) {
-        guard let currentFrame = sceneView.session.currentFrame else { return }
-
-        DispatchQueue.global(qos: .background).async {
-            do {
-                let request = VNDetectBarcodesRequest { (request, error) in
-                    guard let results = request.results?.compactMap({ $0 as? VNBarcodeObservation }), let result = results.first else {
-                        print ("[Vision] VNRequest produced no result")
-                        return
-                    }
-
-                    if let payload = result.payloadStringValue,
-                        let virtualObject = VirtualObject.decode(from: payload) {
-                        VirtualObjectsManager.shared.insert(item: virtualObject)
-                    }
-
-                }
-
-                let handler = VNImageRequestHandler(cvPixelBuffer: currentFrame.capturedImage)
-                try handler.perform([request])
-            } catch(let error) {
-                print("An error occurred during rectangle detection: \(error)")
-            }
+            //            node.isHidden = anchor.is
         }
     }
 }
@@ -210,9 +259,12 @@ extension MainARController {
 extension MainARController: FoundAudioHandler {
     
     func audioFound(isHaveAudio: Bool) {
+        if isHaveAudio {
+            self.audioNameLabel.text = self.arInfoContainer?.info?.audio
+            feedbackGenerator.notificationOccurred(.success)
+        }
         
-        self.audioNameLabel.text = self.arInfoContainer?.info?.audio
-        self.audioView.isHidden = !isHaveAudio
+        self.audioView.isHidden = !isHaveAudio || self.isBlindModeOn
     }
     
     @IBAction func playAudio(_ sender: UIButton) {
@@ -237,4 +289,27 @@ extension MainARController: FoundAudioHandler {
     }
 }
 
+extension MainARController: VideoPlayerDelegate {
+    func startPlay() {
+        self.videoNode?.play()
+    }
+    
+    func pausePlay() {
+        self.videoPlayer?.pause()
+    }
+    
+    func didStartPlay() {
+//        self.arInfoContainer?.node?.isHidden = true
+        self.videoPlayer?.play()
+    }
+    
+    func didEndPlay() {
+//        self.arInfoContainer?.node?.isHidden = false
+    }
+}
 
+extension MainARController: SFSafariViewControllerDelegate {
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true)
+    }
+}

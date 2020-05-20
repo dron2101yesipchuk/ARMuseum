@@ -9,10 +9,6 @@
 import UIKit
 import ARKit
 
-protocol InfoControllerDelegate {
-    func fullScreen(_ isOn: Bool)
-}
-
 class InfoController: UIViewController {
     
     static let storyboardId = "InfoController"
@@ -25,7 +21,6 @@ class InfoController: UIViewController {
     weak var mainViewController: MainARController?
     weak var mainView: UIView?
     
-    var delegate: InfoControllerDelegate?
     var info: VirtualInfo?
     
     override func viewDidLoad() {
@@ -35,7 +30,7 @@ class InfoController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.isPagingEnabled = true
         if self.info == nil {
-            self.info = VirtualInfo(text: "kek", images: [], audio: nil, videoLink: nil)
+            self.info = VirtualInfo(name: "Anything", text: "kek", images: [], audio: nil, videoLink: nil)
             self.collectionView.reloadData()
         }
         
@@ -83,6 +78,14 @@ extension InfoController: UICollectionViewDataSource {
         } else if indexPath.section == 1 {
             if let image = self.info?.images[indexPath.item], let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageInfoCell", for: indexPath) as? ImageInfoCell {
                 cell.configureWith(image: image)
+                return cell
+            }
+        } else if indexPath.section == 2 {
+            if let videoLink = self.info?.videoLink, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as? VideoCell {
+                if let sceneView = self.sceneView,
+                    let arInfoContainer = arInfoContainer {
+                  cell.configure(videoUrl: videoLink, sceneView: sceneView, arInfoContainer: arInfoContainer)
+                }
                 return cell
             }
         }

@@ -11,11 +11,14 @@ import UIKit
 class TextInfoCell: UICollectionViewCell {
     
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet var textViewWidth: NSLayoutConstraint!
+    @IBOutlet var textViewHeight: NSLayoutConstraint!
     
-    override class func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
         
-        
+        self.textViewWidth.constant = UIScreen.main.bounds.width
+        self.textViewHeight.constant = UIScreen.main.bounds.height
     }
     
     func configureWith(text: String) {

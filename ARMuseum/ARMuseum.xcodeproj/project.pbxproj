@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9F13B1112463716300F1F3B0 /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13B1102463716300F1F3B0 /* InfoController.swift */; };
 		9F13B113246374EA00F1F3B0 /* ARInfoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13B112246374EA00F1F3B0 /* ARInfoContainer.swift */; };
+		9F192351247327DD00024701 /* MainARButtonActionsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F192350247327DD00024701 /* MainARButtonActionsExtension.swift */; };
 		9F5C9F68245F3BC30044DE1A /* Teapot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C9F65245F3BC20044DE1A /* Teapot.usdz */; };
 		9F5C9F69245F3BC30044DE1A /* Pig.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C9F66245F3BC20044DE1A /* Pig.usdz */; };
 		9F5C9F6A245F3BC30044DE1A /* Gramophone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C9F67245F3BC30044DE1A /* Gramophone.usdz */; };
@@ -26,6 +27,7 @@
 		9FAF98FE2464A734005BDEB5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF98FD2464A734005BDEB5 /* Extensions.swift */; };
 		9FAF99012464AC70005BDEB5 /* TextInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF99002464AC70005BDEB5 /* TextInfoCell.swift */; };
 		9FAF99032464C122005BDEB5 /* ImageInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF99022464C122005BDEB5 /* ImageInfoCell.swift */; };
+		9FC98EA2246CC7C2009CC77C /* InfoCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC98EA1246CC7C2009CC77C /* InfoCollectionController.swift */; };
 		9FE3832F24620F73007EB33A /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3832E24620F73007EB33A /* VirtualObject.swift */; };
 		9FE3833124621124007EB33A /* VirtualObjectsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3833024621124007EB33A /* VirtualObjectsManager.swift */; };
 		9FE388BD24684A890002645E /* MainARController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE388BC24684A890002645E /* MainARController.swift */; };
@@ -34,11 +36,13 @@
 		9FE388C324689CB30002645E /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE388C224689CB30002645E /* NotificationsManager.swift */; };
 		9FE388C524689CBF0002645E /* PermissionsChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE388C424689CBF0002645E /* PermissionsChecker.swift */; };
 		9FE388C624689CF00002645E /* Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA651ED2467743600330D4E /* Old.swift */; };
+		9FE3AE91246A2D3800B193D0 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3AE8F246A194500B193D0 /* VideoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9F13B1102463716300F1F3B0 /* InfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 		9F13B112246374EA00F1F3B0 /* ARInfoContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARInfoContainer.swift; sourceTree = "<group>"; };
+		9F192350247327DD00024701 /* MainARButtonActionsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARButtonActionsExtension.swift; sourceTree = "<group>"; };
 		9F5C9F65245F3BC20044DE1A /* Teapot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Teapot.usdz; sourceTree = "<group>"; };
 		9F5C9F66245F3BC20044DE1A /* Pig.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Pig.usdz; sourceTree = "<group>"; };
 		9F5C9F67245F3BC30044DE1A /* Gramophone.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Gramophone.usdz; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 		9FAF98FD2464A734005BDEB5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9FAF99002464AC70005BDEB5 /* TextInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInfoCell.swift; sourceTree = "<group>"; };
 		9FAF99022464C122005BDEB5 /* ImageInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoCell.swift; sourceTree = "<group>"; };
+		9FC98EA1246CC7C2009CC77C /* InfoCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionController.swift; sourceTree = "<group>"; };
 		9FE3832E24620F73007EB33A /* VirtualObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
 		9FE3833024621124007EB33A /* VirtualObjectsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectsManager.swift; sourceTree = "<group>"; };
 		9FE388BC24684A890002645E /* MainARController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainARController.swift; sourceTree = "<group>"; };
@@ -67,6 +72,7 @@
 		9FE388C02468997B0002645E /* f1music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = f1music.mp3; sourceTree = "<group>"; };
 		9FE388C224689CB30002645E /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		9FE388C424689CBF0002645E /* PermissionsChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsChecker.swift; sourceTree = "<group>"; };
+		9FE3AE8F246A194500B193D0 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +86,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F5C9F62245F3A450044DE1A /* Controllers */ = {
+		9F19234E2473271200024701 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				9FE388BC24684A890002645E /* MainARController.swift */,
-				9F5C9F6C245F3C080044DE1A /* VirtualObjectsListController.swift */,
+				9F192350247327DD00024701 /* MainARButtonActionsExtension.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		9F19234F2473271D00024701 /* Additional */ = {
+			isa = PBXGroup;
+			children = (
 				9F13B1102463716300F1F3B0 /* InfoController.swift */,
+				9FC98EA1246CC7C2009CC77C /* InfoCollectionController.swift */,
+				9F5C9F6C245F3C080044DE1A /* VirtualObjectsListController.swift */,
+			);
+			path = Additional;
+			sourceTree = "<group>";
+		};
+		9F5C9F62245F3A450044DE1A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9F19234F2473271D00024701 /* Additional */,
+				9F19234E2473271200024701 /* Main */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -182,6 +206,7 @@
 			children = (
 				9FAF99002464AC70005BDEB5 /* TextInfoCell.swift */,
 				9FAF99022464C122005BDEB5 /* ImageInfoCell.swift */,
+				9FE3AE8F246A194500B193D0 /* VideoCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -276,7 +301,10 @@
 				9F5C9F71245F3C620044DE1A /* VirtualObjectCell.swift in Sources */,
 				9FE3832F24620F73007EB33A /* VirtualObject.swift in Sources */,
 				9FAF98FC2464A3C9005BDEB5 /* VirtualInfo.swift in Sources */,
+				9FC98EA2246CC7C2009CC77C /* InfoCollectionController.swift in Sources */,
+				9F192351247327DD00024701 /* MainARButtonActionsExtension.swift in Sources */,
 				9F13B113246374EA00F1F3B0 /* ARInfoContainer.swift in Sources */,
+				9FE3AE91246A2D3800B193D0 /* VideoCell.swift in Sources */,
 				9FE388C624689CF00002645E /* Old.swift in Sources */,
 				9FAF98FA2464A354005BDEB5 /* Recognizer.swift in Sources */,
 				9FAF99012464AC70005BDEB5 /* TextInfoCell.swift in Sources */,

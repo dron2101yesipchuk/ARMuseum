@@ -9,12 +9,14 @@
 import UIKit
 
 class VirtualInfo {
+    var name: String
     var text: String?
     var images: [UIImage?] = []
     var audio: String?
     var videoLink: String?
     
-    init(text: String?, images: [UIImage?], audio: String?, videoLink: String?) {
+    init(name: String, text: String?, images: [UIImage?], audio: String?, videoLink: String?) {
+        self.name = name
         self.text = text
         self.images = images
         self.audio = audio
