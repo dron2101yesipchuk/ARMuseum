@@ -40,7 +40,6 @@ class VirtualObjectsListController: UITableViewController {
         return UITableViewCell()
     }
 
-    // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.modelIndex = indexPath.row
         let previewController = QLPreviewController()

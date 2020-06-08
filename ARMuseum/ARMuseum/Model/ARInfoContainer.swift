@@ -25,18 +25,13 @@ class ARInfoContainer {
     var anchor: ARAnchor
     var node: SCNNode?
     var plane: SCNPlane
-    var isFullScreen = false
     var viewController: InfoCollectionController?
-    
-    var videoAnchor: ARAnchor?
     var videoNode: SCNNode?
-    var hasVideoNode: Bool { return videoNode != nil }
+    var videoPlayer: AVPlayer?
     
-    weak var videoNodeHandler: VideoNodeHandler?
     weak var videoPlayerDelegate: VideoPlayerDelegate?
     
     init(anchor: ARAnchor, plane: SCNPlane) {
-    //    self.billboardData = billboardData
         self.plane = plane
         self.anchor = anchor
       }

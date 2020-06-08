@@ -32,159 +32,37 @@ import AVFoundation
 import ARKit
 
 class VideoCell: UICollectionViewCell {
-    var isPlaying = false
-    var videoNode: SKVideoNode!
-    var spriteScene: SKScene!
-    var videoUrl: String!
-    var player: AVPlayer?
-    weak var arInfoContainer: ARInfoContainer?
-    weak var sceneView: ARSCNView?
-    @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var playerContainer: UIView!
+    
+    @IBOutlet weak var actionImageView: UIImageView!
     @IBOutlet var containerViewWidth: NSLayoutConstraint!
     @IBOutlet var containerViewHeight: NSLayoutConstraint!
+    
+    var isPlaying = false
+    weak var arInfoContainer: ARInfoContainer?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.containerViewWidth.constant = UIScreen.main.bounds.width
         self.containerViewHeight.constant = UIScreen.main.bounds.height
+        
+        self.actionImageView.image = UIImage(named: "play.fill")
     }
     
-    func configure(videoUrl: String, sceneView: ARSCNView, arInfoContainer: ARInfoContainer) {
-        self.videoUrl = videoUrl
+    func configure(arInfoContainer: ARInfoContainer) {
         self.arInfoContainer = arInfoContainer
-        self.sceneView = sceneView
-        arInfoContainer.videoNodeHandler = self
     }
     
-    func createVideoPlayerAnchor() {
-        guard let billboard = arInfoContainer else { return }
-        guard let sceneView = sceneView else { return }
+    @IBAction func playVideo(_ sender: UIButton) {
+        guard let billboard = self.arInfoContainer else { return }
         
-        let center = billboard.anchor.transform * matrix_float4x4(SCNMatrix4MakeRotation(Float.pi / 2.0, 0, 0, 1))
-        let anchor = ARAnchor(transform: center)
-        sceneView.session.add(anchor: anchor)
-        billboard.videoAnchor = anchor
-    }
-    
-    func createVideoPlayerView() {
-        if player == nil {
-            guard let url = URL(string: videoUrl) else { return }
-            player = AVPlayer(url: url)
-            let layer = AVPlayerLayer(player: player)
-            layer.frame = playerContainer.bounds
-            playerContainer.layer.addSublayer(layer)
-        }
-        
-        player?.play()
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let billboard = arInfoContainer else { return }
-        
-        if billboard.isFullScreen {
-            if isPlaying == false {
-                createVideoPlayerView()
-                //                playButton.setImage(#imageLiteral(resourceName: "arKit-pause"), for: .normal)
-            } else {
-                stopVideo()
-                //                playButton.setImage(#imageLiteral(resourceName: "arKit-play"), for: .normal)
-            }
-            isPlaying = !isPlaying
-        } else {
-            createVideoPlayerAnchor()
+        if self.isPlaying == false {
             billboard.videoPlayerDelegate?.didStartPlay()
-            //                    playButton.isEnabled = false
-        }
-    }
-    
-    func stopVideo() {
-        player?.pause()
-    }
-    
-    @IBAction func play(_ sender: UIButton) {
-        guard let billboard = arInfoContainer else { return }
-        
-        if billboard.isFullScreen {
-            if isPlaying == false {
-                createVideoPlayerView()
-                //                playButton.setImage(#imageLiteral(resourceName: "arKit-pause"), for: .normal)
-            } else {
-                stopVideo()
-                //                playButton.setImage(#imageLiteral(resourceName: "arKit-play"), for: .normal)
-            }
-            isPlaying = !isPlaying
+            self.actionImageView.image = UIImage(named: "pause.fill")
         } else {
-            if isPlaying == false {
-                billboard.videoPlayerDelegate?.didStartPlay()
-                playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            } else {
-                billboard.videoPlayerDelegate?.pausePlay()
-                playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            }
-            isPlaying = !isPlaying
-//            createVideoPlayerAnchor()
-//            billboard.videoPlayerDelegate?.startPlay()
-            
-            //            playButton.isEnabled = false
+            billboard.videoPlayerDelegate?.pausePlay()
+            self.actionImageView.image = UIImage(named: "play.fill")
         }
-    }
-}
-
-extension VideoCell: VideoNodeHandler {
-    func createNode() -> SCNNode? {
-        guard let billboard = arInfoContainer else { return nil }
-        var node: SCNNode!
-        let url = URL(string: videoUrl)!
-        
-        let player = AVPlayer(url: url)
-        let videoNode = SKVideoNode(avPlayer: player)
-        videoNode.pause()
-        videoNode.size = CGSize(width: 1024, height: 1024)
-        // set the size (just a rough one will do)
-        let videoScene = SKScene(size: CGSize(width: 1024, height: 1024))
-        videoScene.scaleMode = .aspectFit
-        // center our video to the size of our video scene
-        videoNode.position = CGPoint(x: videoScene.size.width / 2, y: videoScene.size.height / 2)
-        // invert our video so it does not look upside down
-        videoNode.yScale = -1.0
-        // add the video to our scene
-        videoScene.addChild(videoNode)
-        // create a plan that has the same real world height and width as our detected image
-        var plane = SCNPlane(width: 100, height: 100)
-        if let imageAnchor = billboard.anchor as? ARImageAnchor {
-            plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
-        } else if let objectAnchor = billboard.anchor as? ARObjectAnchor {
-            plane = SCNPlane(width: CGFloat(objectAnchor.referenceObject.extent.x * 0.9), height: CGFloat(objectAnchor.referenceObject.extent.y * 1.8))
-        }
-        // set the first materials content to be our video scene
-        plane.firstMaterial?.diffuse.contents = videoScene
-        // create a node out of the plane
-        let planeNode = SCNNode(geometry: plane)
-        // since the created node will be vertical, rotate it along the x axis to have it be horizontal or parallel to our detected image
-        planeNode.eulerAngles.x = -Float.pi / 2
-        // finally add the plane node (which contains the video node) to the added node
-        node.addChildNode(planeNode)
-        return node
-    }
-    
-    func removeNode() {
-        videoNode?.pause()
-        
-        spriteScene?.removeAllChildren()
-        spriteScene = nil
-        
-        if let videoAnchor = arInfoContainer?.videoAnchor {
-            sceneView?.session.remove(anchor: videoAnchor)
-        }
-        
-        arInfoContainer?.videoPlayerDelegate?.didEndPlay()
-        
-        arInfoContainer?.videoNode?.removeFromParentNode()
-        arInfoContainer?.videoAnchor = nil
-        arInfoContainer?.videoNode = nil
-        
-        //        playButton.isEnabled = true
+        self.isPlaying = !self.isPlaying
     }
 }

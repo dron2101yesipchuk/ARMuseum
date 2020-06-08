@@ -44,7 +44,7 @@ extension MainARController {
             //TODO: Alert
             return
         }
-        var textToSearch = info.name
+        let textToSearch = info.name
         let allowedCharacters = NSCharacterSet.urlFragmentAllowed
 
         guard let encodedSearchString = textToSearch.addingPercentEncoding(withAllowedCharacters: allowedCharacters)  else {
@@ -52,7 +52,7 @@ extension MainARController {
         }
         let queryString = "https://www.google.com/search?q=\(encodedSearchString)"
         if let url = URL(string: queryString) {
-            let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+            let vc = SFSafariViewController(url: url)
             vc.delegate = self
             
             present(vc, animated: true)
@@ -61,6 +61,26 @@ extension MainARController {
     
     @IBAction func turnBlindOn(_ sender: UIButton) {
         self.isBlindModeOn = !self.isBlindModeOn
+    }
+    
+    @IBAction func playAudio(_ sender: UIButton) {
+        if let audioManager = self.audioManager {
+            audioManager.play()
+        } else  {
+            self.audioManager?.play()
+        }
+        
+        self.playButton.isHidden = true
+        self.pauseButton.isHidden = false
+        
+    }
+    
+    @IBAction func pauseAudio(_ sender: UIButton) {
+        if let audioManager = self.audioManager {
+            audioManager.pause()
+            self.playButton.isHidden = false
+            self.pauseButton.isHidden = true
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -75,8 +95,6 @@ extension MainARController {
                 self.audioManager = AudioManager(withFileName: audioName)
                 self.audioManager?.play()
             }
-        } else {
-            
         }
     }
 }

@@ -23,6 +23,8 @@ class TextInfoCell: UICollectionViewCell {
     
     func configureWith(text: String) {
         self.textView.text = text
+        self.textView.backgroundColor = .white
+        self.textView.textColor = .black
     }
     
 }
