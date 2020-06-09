@@ -14,6 +14,7 @@
 		9F47572B248DB216003DD94F /* MainControllerARExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47572A248DB216003DD94F /* MainControllerARExtension.swift */; };
 		9F47572D248DB21F003DD94F /* MainARButtonActionsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47572C248DB21F003DD94F /* MainARButtonActionsExtension.swift */; };
 		9F475732248DBF9C003DD94F /* Safety in F1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F475731248DBF9C003DD94F /* Safety in F1.mp3 */; };
+		9F475734248DF443003DD94F /* Huracan.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9F475733248DF443003DD94F /* Huracan.usdz */; };
 		9F5C9F68245F3BC30044DE1A /* Teapot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C9F65245F3BC20044DE1A /* Teapot.usdz */; };
 		9F5C9F69245F3BC30044DE1A /* Pig.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C9F66245F3BC20044DE1A /* Pig.usdz */; };
 		9F5C9F6A245F3BC30044DE1A /* Gramophone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C9F67245F3BC30044DE1A /* Gramophone.usdz */; };
@@ -49,6 +50,7 @@
 		9F47572A248DB216003DD94F /* MainControllerARExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainControllerARExtension.swift; sourceTree = "<group>"; };
 		9F47572C248DB21F003DD94F /* MainARButtonActionsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainARButtonActionsExtension.swift; sourceTree = "<group>"; };
 		9F475731248DBF9C003DD94F /* Safety in F1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Safety in F1.mp3"; path = "ARMuseum/Resources/Safety in F1.mp3"; sourceTree = SOURCE_ROOT; };
+		9F475733248DF443003DD94F /* Huracan.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Huracan.usdz; sourceTree = "<group>"; };
 		9F5C9F65245F3BC20044DE1A /* Teapot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Teapot.usdz; sourceTree = "<group>"; };
 		9F5C9F66245F3BC20044DE1A /* Pig.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Pig.usdz; sourceTree = "<group>"; };
 		9F5C9F67245F3BC30044DE1A /* Gramophone.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Gramophone.usdz; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		9F5C9F6B245F3BDD0044DE1A /* USDZ */ = {
 			isa = PBXGroup;
 			children = (
+				9F475733248DF443003DD94F /* Huracan.usdz */,
 				9F5C9F67245F3BC30044DE1A /* Gramophone.usdz */,
 				9F5C9F66245F3BC20044DE1A /* Pig.usdz */,
 				9F5C9F65245F3BC20044DE1A /* Teapot.usdz */,
@@ -288,6 +291,7 @@
 				9F475732248DBF9C003DD94F /* Safety in F1.mp3 in Resources */,
 				9F5C9F69245F3BC30044DE1A /* Pig.usdz in Resources */,
 				9F5C9F6A245F3BC30044DE1A /* Gramophone.usdz in Resources */,
+				9F475734248DF443003DD94F /* Huracan.usdz in Resources */,
 				9F5C9F68245F3BC30044DE1A /* Teapot.usdz in Resources */,
 				9F988FE724111E9C0021A8B5 /* LaunchScreen.storyboard in Resources */,
 				9F988FE424111E9C0021A8B5 /* Assets.xcassets in Resources */,

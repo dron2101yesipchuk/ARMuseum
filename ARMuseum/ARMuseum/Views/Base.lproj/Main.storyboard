@@ -185,7 +185,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NE9-nE-LGe">
                                 <rect key="frame" x="64" y="747" width="100" height="100"/>
                                 <connections>
-                                    <segue destination="NOe-qs-ReV" kind="presentation" id="NG4-gy-hgB"/>
+                                    <segue destination="NOe-qs-ReV" kind="presentation" modalPresentationStyle="fullScreen" id="NG4-gy-hgB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -424,11 +424,11 @@
             <objects>
                 <viewController id="NOe-qs-ReV" customClass="MapDetailedController" customModule="ARMuseum" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w5C-71-Ggw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCK-9z-4tZ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="bdX-yi-F3w"/>
                                 </constraints>
@@ -439,10 +439,10 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" maximumZoomScale="2" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BW6-X4-gNO">
-                                <rect key="frame" x="0.0" y="40" width="414" height="802"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="812"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapImage" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7I5-ge-sHN">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="802"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
