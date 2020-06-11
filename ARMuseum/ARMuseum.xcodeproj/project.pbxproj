@@ -10,7 +10,7 @@
 		9F13B113246374EA00F1F3B0 /* ARInfoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13B112246374EA00F1F3B0 /* ARInfoContainer.swift */; };
 		9F475725248DA098003DD94F /* MapDetailedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F475724248DA098003DD94F /* MapDetailedController.swift */; };
 		9F475727248DB1F5003DD94F /* MainARAudioVideoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F475726248DB1F5003DD94F /* MainARAudioVideoExtension.swift */; };
-		9F475729248DB209003DD94F /* MainARShowingInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F475728248DB209003DD94F /* MainARShowingInfoExtension.swift */; };
+		9F475729248DB209003DD94F /* MainARShowinginfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F475728248DB209003DD94F /* MainARShowinginfoExtension.swift */; };
 		9F47572B248DB216003DD94F /* MainControllerARExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47572A248DB216003DD94F /* MainControllerARExtension.swift */; };
 		9F47572D248DB21F003DD94F /* MainARButtonActionsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47572C248DB21F003DD94F /* MainARButtonActionsExtension.swift */; };
 		9F475732248DBF9C003DD94F /* Safety in F1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F475731248DBF9C003DD94F /* Safety in F1.mp3 */; };
@@ -28,7 +28,6 @@
 		9F988FE724111E9C0021A8B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F988FE524111E9C0021A8B5 /* LaunchScreen.storyboard */; };
 		9FA651EC2467643200330D4E /* ExhibitsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA651EB2467643200330D4E /* ExhibitsManager.swift */; };
 		9FAF98FC2464A3C9005BDEB5 /* VirtualInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF98FB2464A3C9005BDEB5 /* VirtualInfo.swift */; };
-		9FAF98FE2464A734005BDEB5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF98FD2464A734005BDEB5 /* Extensions.swift */; };
 		9FAF99012464AC70005BDEB5 /* TextInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF99002464AC70005BDEB5 /* TextInfoCell.swift */; };
 		9FAF99032464C122005BDEB5 /* ImageInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF99022464C122005BDEB5 /* ImageInfoCell.swift */; };
 		9FC98EA2246CC7C2009CC77C /* InfoCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC98EA1246CC7C2009CC77C /* InfoCollectionController.swift */; };
@@ -46,7 +45,7 @@
 		9F13B112246374EA00F1F3B0 /* ARInfoContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARInfoContainer.swift; sourceTree = "<group>"; };
 		9F475724248DA098003DD94F /* MapDetailedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailedController.swift; sourceTree = "<group>"; };
 		9F475726248DB1F5003DD94F /* MainARAudioVideoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARAudioVideoExtension.swift; sourceTree = "<group>"; };
-		9F475728248DB209003DD94F /* MainARShowingInfoExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainARShowingInfoExtension.swift; sourceTree = "<group>"; };
+		9F475728248DB209003DD94F /* MainARShowinginfoExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainARShowinginfoExtension.swift; sourceTree = "<group>"; };
 		9F47572A248DB216003DD94F /* MainControllerARExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainControllerARExtension.swift; sourceTree = "<group>"; };
 		9F47572C248DB21F003DD94F /* MainARButtonActionsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainARButtonActionsExtension.swift; sourceTree = "<group>"; };
 		9F475731248DBF9C003DD94F /* Safety in F1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Safety in F1.mp3"; path = "ARMuseum/Resources/Safety in F1.mp3"; sourceTree = SOURCE_ROOT; };
@@ -68,7 +67,6 @@
 		9FA651EB2467643200330D4E /* ExhibitsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitsManager.swift; sourceTree = "<group>"; };
 		9FA651ED2467743600330D4E /* Old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Old.swift; sourceTree = "<group>"; };
 		9FAF98FB2464A3C9005BDEB5 /* VirtualInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualInfo.swift; sourceTree = "<group>"; };
-		9FAF98FD2464A734005BDEB5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9FAF99002464AC70005BDEB5 /* TextInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInfoCell.swift; sourceTree = "<group>"; };
 		9FAF99022464C122005BDEB5 /* ImageInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoCell.swift; sourceTree = "<group>"; };
 		9FC98EA1246CC7C2009CC77C /* InfoCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionController.swift; sourceTree = "<group>"; };
@@ -98,7 +96,7 @@
 				9FE388BC24684A890002645E /* MainARController.swift */,
 				9F475726248DB1F5003DD94F /* MainARAudioVideoExtension.swift */,
 				9F47572A248DB216003DD94F /* MainControllerARExtension.swift */,
-				9F475728248DB209003DD94F /* MainARShowingInfoExtension.swift */,
+				9F475728248DB209003DD94F /* MainARShowinginfoExtension.swift */,
 				9F47572C248DB21F003DD94F /* MainARButtonActionsExtension.swift */,
 			);
 			path = Main;
@@ -138,7 +136,6 @@
 		9F5C9F64245F3AE40044DE1A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				9FAF98FD2464A734005BDEB5 /* Extensions.swift */,
 				9FE3833024621124007EB33A /* VirtualObjectsManager.swift */,
 				9FA651EB2467643200330D4E /* ExhibitsManager.swift */,
 				9FE388BE246897B60002645E /* AudioManager.swift */,
@@ -318,8 +315,7 @@
 				9FE388C624689CF00002645E /* Old.swift in Sources */,
 				9FAF99012464AC70005BDEB5 /* TextInfoCell.swift in Sources */,
 				9F47572B248DB216003DD94F /* MainControllerARExtension.swift in Sources */,
-				9FAF98FE2464A734005BDEB5 /* Extensions.swift in Sources */,
-				9F475729248DB209003DD94F /* MainARShowingInfoExtension.swift in Sources */,
+				9F475729248DB209003DD94F /* MainARShowinginfoExtension.swift in Sources */,
 				9F988FDB24111E980021A8B5 /* AppDelegate.swift in Sources */,
 				9FE388BD24684A890002645E /* MainARController.swift in Sources */,
 				9F47572D248DB21F003DD94F /* MainARButtonActionsExtension.swift in Sources */,

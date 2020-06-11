@@ -7,7 +7,6 @@
 //
 
 import AVFoundation
-import Photos
 
 class PermissionsChecker {
     class func checkCameraPermissions(_ completion: @escaping (Bool)->()) {

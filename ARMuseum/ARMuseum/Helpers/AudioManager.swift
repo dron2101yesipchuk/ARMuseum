@@ -8,6 +8,12 @@
 
 import AVFoundation
 
+extension TimeInterval {
+    var timeInMinutes: String {
+        return String(format: "%02d:%02d", ((Int)(self)) / 60, ((Int)(self)) % 60)
+    }
+}
+
 enum AudioRecorderState {
     case Pause
     case Play

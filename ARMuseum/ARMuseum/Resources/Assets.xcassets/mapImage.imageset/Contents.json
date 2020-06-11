@@ -1,8 +1,8 @@
 {
   "images" : [
     {
+      "filename" : "damour-museum-of-fine-arts-museum-map-first-floor.png",
       "idiom" : "universal",
-      "filename" : "j1f.jpg",
       "scale" : "1x"
     },
     {
@@ -15,7 +15,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
