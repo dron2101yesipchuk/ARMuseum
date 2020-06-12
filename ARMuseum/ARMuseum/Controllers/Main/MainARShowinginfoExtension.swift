@@ -34,13 +34,13 @@ extension MainARController {
     func showObjectInfo(objectAnchor: ARObjectAnchor, node: SCNNode) {
         self.removeHostingController()
         
-        let plane = SCNPlane(width: 0.09, height: 0.16)
+        let plane = SCNPlane(width: 0.18, height: 0.32)
         let planeNode = SCNNode(geometry: plane)
         if let rotate = sceneView.session.currentFrame?.camera.transform {
             node.simdTransform = rotate
         }
         
-        let translation = SCNMatrix4MakeTranslation(0.1, 0.15, 0)
+        let translation = SCNMatrix4MakeTranslation(0.2, 0.15, 0)
         let rotation = SCNMatrix4MakeRotation(0, 0, 0, 0)
         let transform = SCNMatrix4Mult(translation, rotation)
         planeNode.transform = transform
@@ -95,10 +95,6 @@ extension MainARController {
             self.arInfoContainer?.videoPlayerDelegate = self
             
             arVC.arInfoContainer = self.arInfoContainer
-            
-//            if self.isBlindModeOn {
-//                NotificationsManager.shared.postAudioFoundNotification(exhibitInfo.audio != nil)
-//            }
             
             arVC.willMove(toParent: self)
             self.addChild(arVC)

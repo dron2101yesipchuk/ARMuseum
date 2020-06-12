@@ -31,7 +31,7 @@ extension MainARController: FoundAudioHandler {
 
 extension MainARController: VideoPlayerDelegate {
     func startPlay() {
-        self.arInfoContainer?.videoPlayer?.play()
+
     }
     
     func pausePlay() {
@@ -39,7 +39,6 @@ extension MainARController: VideoPlayerDelegate {
     }
     
     func didStartPlay() {
-//        self.arInfoContainer?.node?.isHidden = true
          self.arInfoContainer?.videoPlayer?.play()
          self.arInfoContainer?.videoNode?.isHidden = false
     }

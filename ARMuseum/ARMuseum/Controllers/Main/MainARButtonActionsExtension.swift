@@ -54,6 +54,7 @@ extension MainARController {
         if let url = URL(string: queryString) {
             let vc = SFSafariViewController(url: url)
             vc.delegate = self
+            vc.modalPresentationStyle = .popover
             
             present(vc, animated: true)
         }

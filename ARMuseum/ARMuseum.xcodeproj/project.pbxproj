@@ -10,7 +10,6 @@
 		9F13B113246374EA00F1F3B0 /* ARInfoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13B112246374EA00F1F3B0 /* ARInfoContainer.swift */; };
 		9F475725248DA098003DD94F /* MapDetailedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F475724248DA098003DD94F /* MapDetailedController.swift */; };
 		9F475727248DB1F5003DD94F /* MainARAudioVideoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F475726248DB1F5003DD94F /* MainARAudioVideoExtension.swift */; };
-		9F475729248DB209003DD94F /* MainARShowinginfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F475728248DB209003DD94F /* MainARShowinginfoExtension.swift */; };
 		9F47572B248DB216003DD94F /* MainControllerARExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47572A248DB216003DD94F /* MainControllerARExtension.swift */; };
 		9F47572D248DB21F003DD94F /* MainARButtonActionsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47572C248DB21F003DD94F /* MainARButtonActionsExtension.swift */; };
 		9F475732248DBF9C003DD94F /* Safety in F1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F475731248DBF9C003DD94F /* Safety in F1.mp3 */; };
@@ -39,6 +38,7 @@
 		9FE388C524689CBF0002645E /* PermissionsChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE388C424689CBF0002645E /* PermissionsChecker.swift */; };
 		9FE388C624689CF00002645E /* Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA651ED2467743600330D4E /* Old.swift */; };
 		9FE3AE91246A2D3800B193D0 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3AE8F246A194500B193D0 /* VideoCell.swift */; };
+		9FE88FEF24923B550017B353 /* MainARShowinginfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F475728248DB209003DD94F /* MainARShowinginfoExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -315,7 +315,6 @@
 				9FE388C624689CF00002645E /* Old.swift in Sources */,
 				9FAF99012464AC70005BDEB5 /* TextInfoCell.swift in Sources */,
 				9F47572B248DB216003DD94F /* MainControllerARExtension.swift in Sources */,
-				9F475729248DB209003DD94F /* MainARShowinginfoExtension.swift in Sources */,
 				9F988FDB24111E980021A8B5 /* AppDelegate.swift in Sources */,
 				9FE388BD24684A890002645E /* MainARController.swift in Sources */,
 				9F47572D248DB21F003DD94F /* MainARButtonActionsExtension.swift in Sources */,
@@ -323,6 +322,7 @@
 				9FE388BF246897B60002645E /* AudioManager.swift in Sources */,
 				9FE3833124621124007EB33A /* VirtualObjectsManager.swift in Sources */,
 				9FA651EC2467643200330D4E /* ExhibitsManager.swift in Sources */,
+				9FE88FEF24923B550017B353 /* MainARShowinginfoExtension.swift in Sources */,
 				9FE388C324689CB30002645E /* NotificationsManager.swift in Sources */,
 				9FAF99032464C122005BDEB5 /* ImageInfoCell.swift in Sources */,
 				9F988FDF24111E980021A8B5 /* Experience.rcproject in Sources */,
